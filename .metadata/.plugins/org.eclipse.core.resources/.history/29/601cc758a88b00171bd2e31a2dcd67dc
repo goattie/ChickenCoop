@@ -1,0 +1,28 @@
+package coopIntegration;
+
+import java.io.IOException;
+
+import coopDataStructures.ConfigFile;
+
+public class TemperatureSensorImpl implements TemperatureSensor{
+
+	public double getTemperature() {
+		double temp = 0.0;
+		
+		ProcessBuilder loadModuleGpio = new ProcessBuilder("sudo modprobe w1-gpio");
+		ProcessBuilder loadModuleTherm = new ProcessBuilder("sudo modprobe w1-therm");
+		
+		CoopConfigImpl getConfig = new CoopConfigImpl();
+		ConfigFile config = getConfig.readConfigFile();
+		String openSound = "omxplayer "+config.getMp3Open();		
+		ProcessBuilder executeSound = new ProcessBuilder(openSound);
+		try {
+			executeSound.start();
+		} catch (IOException exception) {			
+			exception.printStackTrace();
+		}
+		
+		return temp;
+	}
+
+}

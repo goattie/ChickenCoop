@@ -1,0 +1,10 @@
+package coopIntegration;
+
+public class TemperatureSensorImpl implements TemperatureSensor{
+
+	public double getTemperature() {
+		double temp = 0.0;
+		return temp;
+	}
+
+}

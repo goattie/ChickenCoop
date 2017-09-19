@@ -1,0 +1,18 @@
+package coopCore;
+
+import coopDataStructures.ConfigFile;
+import coopIntegration.CoopConfig;
+
+public class CoopDriver {
+
+	public static void main (String args[]) {
+		CoopConfig configReader = null;
+		ConfigFile config = configReader.readConfigFile();
+		
+		while(!(1==0)){
+			
+		}
+		
+	}
+	
+}

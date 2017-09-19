@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;FileReader&apos; to &apos;fileReader&apos;&#x0D;&#x0A;- Original project: &apos;mainCoopImplementation&apos;&#x0D;&#x0A;- Original element: &apos;mainCoopImplementation/src/FileReader&apos;&#x0D;&#x0A;- Renamed element: &apos;mainCoopImplementation/src/fileReader&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;FileReader&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;FileReader" name="fileReader" qualified="false" references="true" stamp="1498101787328" textual="false" version="1.0"/>
+</session>

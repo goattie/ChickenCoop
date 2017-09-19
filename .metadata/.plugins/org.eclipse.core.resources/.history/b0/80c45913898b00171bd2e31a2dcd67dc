@@ -1,0 +1,35 @@
+package coopIntegration;
+
+import com.pi4j.io.gpio.GpioController;
+import com.pi4j.io.gpio.GpioFactory;
+import com.pi4j.io.gpio.GpioPinDigitalInput;
+import com.pi4j.io.gpio.GpioPinDigitalOutput;
+import com.pi4j.io.gpio.PinPullResistance;
+import com.pi4j.io.gpio.PinState;
+import com.pi4j.io.gpio.RaspiPin;
+import com.pi4j.io.gpio.trigger.GpioCallbackTrigger;
+import com.pi4j.io.gpio.trigger.GpioPulseStateTrigger;
+import com.pi4j.io.gpio.trigger.GpioSetStateTrigger;
+import com.pi4j.io.gpio.trigger.GpioSyncStateTrigger;
+
+public class DoorFunctionsImpl implements DoorFunctions{
+
+	
+	public void openDoor() {
+		// create gpio controller
+        final GpioController gpio = GpioFactory.getInstance();
+        
+        //setup pins
+        gpio.provisionDigitalOutputPin(RaspiPin.GPIO_05, "LED #1", PinState.LOW);
+        gpio.provisionDigitalOutputPin(RaspiPin.GPIO_07, "LED #2", PinState.LOW);
+		
+	}
+
+	
+	public void closeDoor() {
+		// create gpio controller
+        final GpioController gpio = GpioFactory.getInstance();
+		
+	}
+
+}

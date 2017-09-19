@@ -1,0 +1,23 @@
+package coopIntegration;
+
+import java.io.IOException;
+
+import javax.sound.sampled.Clip;
+
+public class ChickenSoundsImpl implements ChickenSounds{
+
+	
+	public void playOpenSound() {
+		//Runtime.getRuntime().exec("sudo reboot");
+		ProcessBuilder executeSound = new ProcessBuilder("omxplayer example.mp3");
+		
+	}
+
+	
+	public void playCloseSound() {
+		//Runtime.getRuntime().exec("sudo reboot");
+				ProcessBuilder executeSound = new ProcessBuilder("omxplayer example.mp3");
+		
+	}
+		
+}

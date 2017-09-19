@@ -1,0 +1,27 @@
+package coopIntegration;
+
+import javax.sound.sampled.Clip;
+
+public class ChickenSoundsImpl implements ChickenSounds{
+
+	
+	public void playOpenSound() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+	public void playCloseSound() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	private Clip getSoundClip(String filePath) {
+		Clip clip;
+		
+		
+		return null;
+		
+	}
+
+}
