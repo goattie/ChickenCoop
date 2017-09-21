@@ -1,0 +1,2 @@
+2017-09-19 20:13:17,275 [Worker-817] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: Goattie:ChickenCoop:0.0.1-SNAPSHOT @ D:\Users\desktop\CoopWorkspace\ChickenCoop\pom.xml.
+2017-09-19 20:13:18,731 [Worker-786] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: Goattie:ChickenCoop:0.0.1-SNAPSHOT @ D:\Users\desktop\CoopWorkspace\ChickenCoop\pom.xml.

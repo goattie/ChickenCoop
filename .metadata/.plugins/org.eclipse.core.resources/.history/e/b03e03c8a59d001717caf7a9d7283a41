@@ -1,0 +1,5 @@
+package coopExceptions;
+
+public class MySqlPoolableException {
+
+}

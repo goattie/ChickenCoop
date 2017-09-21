@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<item value="C:\Users\desktop\Downloads\javasounddemo-150249\JavaSoundDemo" key="org.eclipse.jdt.ui.lastextjar"/>
+	<item value="D:\ChickenCoop" key="org.eclipse.jdt.ui.last.external.project"/>
 	<section name="org.eclipse.ltk.ui.refactoring.settings">
 		<item value="false" key="renameSubpackages"/>
 		<item value="false" key="updateQualifiedNames"/>

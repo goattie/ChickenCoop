@@ -9,7 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
-import coopDataStructures.ConfigFile;
+import coopDataStructures.CoopConfig;
 
 public class TemperatureSensorImpl implements TemperatureSensor{
 
@@ -26,8 +26,8 @@ public class TemperatureSensorImpl implements TemperatureSensor{
 //	    }
 	    
 	    public static void main(String[] args) throws InterruptedException {
-	    	TemperatureSensorImpl sketch = new TemperatureSensorImpl(GpioFactory.getInstance());        
-	        sketch.run(args);
+	    	TemperatureSensorImpl tempSensor = new TemperatureSensorImpl(GpioFactory.getInstance());        
+	        tempSensor.run(args);
 	    }
 	    
 	    @Override

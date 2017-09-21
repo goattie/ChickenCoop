@@ -1,0 +1,9 @@
+package coopIntegration;
+
+import coopDataStructures.Config;
+
+public interface CoopFileReader {
+	
+	public Config readConfigFile();
+
+}
