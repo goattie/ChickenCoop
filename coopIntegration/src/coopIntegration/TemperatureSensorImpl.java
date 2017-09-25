@@ -18,12 +18,12 @@ public class TemperatureSensorImpl implements TemperatureSensor{
 	    private String device_fileName; // Argument to point 28-000xxxx
 	    
 	   	    
-//	    /**
-//	     * @param gpio controller 
-//	     */
-//	    public TemperatureSensorImpl(GpioController gpio){
-//	        super(gpio);
-//	    }
+	    /**
+	     * @param gpio controller 
+	     */
+	    public TemperatureSensorImpl(GpioController gpio){
+	        super();
+	    }
 	    
 	    public static void main(String[] args) throws InterruptedException {
 	    	TemperatureSensorImpl tempSensor = new TemperatureSensorImpl(GpioFactory.getInstance());        

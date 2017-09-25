@@ -8,4 +8,20 @@
 <fullyQualifiedTypeName name="java.io.FileReader"/>
 <fullyQualifiedTypeName name="javax.sound.sampled.Clip"/>
 <fullyQualifiedTypeName name="coopIntegration.CoopConfig"/>
+<fullyQualifiedTypeName name="org.apache.commons.pool2.BasePooledObjectFactory"/>
+<fullyQualifiedTypeName name="java.sql.SQLException"/>
+<fullyQualifiedTypeName name="coopExceptions.MySqlPoolableException"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.sql.Connection"/>
+<fullyQualifiedTypeName name="java.sql.Statement"/>
+<fullyQualifiedTypeName name="java.sql.ResultSet"/>
+<fullyQualifiedTypeName name="org.apache.commons.pool.ObjectPool"/>
+<fullyQualifiedTypeName name="java.util.Properties"/>
+<fullyQualifiedTypeName name="org.apache.commons.pool.PoolableObjectFactory"/>
+<fullyQualifiedTypeName name="org.apache.commons.pool.impl.GenericObjectPoolFactory"/>
+<fullyQualifiedTypeName name="coopIntegration.MySqlPoolableObjectFactory"/>
+<fullyQualifiedTypeName name="org.apache.commons.pool.impl.GenericObjectPool"/>
+<fullyQualifiedTypeName name="org.apache.commons.pool.impl.GenericObjectPool.Config"/>
+<fullyQualifiedTypeName name="coopIntegration.SqlPoolConnectionControl"/>
+<fullyQualifiedTypeName name="coopDataStructures.Config"/>
 </qualifiedTypeNameHistroy>
