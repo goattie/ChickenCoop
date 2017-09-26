@@ -2,16 +2,13 @@ package coopIntegration;
 
 import java.io.IOException;
 
-import coopDataStructures.CoopConfig;
 
 public class ChickenSoundsImpl implements ChickenSounds{
 
 	
-	public void playOpenSound() {
-		//Runtime.getRuntime().exec("sudo reboot");
-		CoopFileReaderImpl getConfig = new CoopFileReaderImpl();
-		CoopConfig config = getConfig.readConfigFile();
-		String openSound = "omxplayer "+config.getMp3Open();		
+	public void playOpenSound(String openSoundLocation) {
+		//Runtime.getRuntime().exec("sudo reboot");		
+		String openSound = "omxplayer "+openSoundLocation;		
 		ProcessBuilder executeSound = new ProcessBuilder(openSound);
 		try {
 			executeSound.start();
@@ -22,11 +19,10 @@ public class ChickenSoundsImpl implements ChickenSounds{
 	}
 
 	
-	public void playCloseSound() {
+	public void playCloseSound(String closeSoundLocation) {
 		//Runtime.getRuntime().exec("sudo reboot");
-				CoopFileReaderImpl getConfig = new CoopFileReaderImpl();
-				CoopConfig config = getConfig.readConfigFile();
-				String closeSound = "omxplayer "+config.getMp3Close();		
+				
+				String closeSound = "omxplayer "+closeSoundLocation;		
 				ProcessBuilder executeSound = new ProcessBuilder(closeSound);
 				try {
 					executeSound.start();

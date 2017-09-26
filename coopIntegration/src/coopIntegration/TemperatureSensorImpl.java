@@ -17,38 +17,38 @@ public class TemperatureSensorImpl implements TemperatureSensor{
 	    public final static String W1_SLAVE = "/w1_slave";
 	    private String device_fileName; // Argument to point 28-000xxxx
 	    
-	   	    
-	    /**
-	     * @param gpio controller 
-	     */
-	    public TemperatureSensorImpl(GpioController gpio){
-	        super();
-	    }
+//	   	    
+//	    /**
+//	     * @param gpio controller 
+//	     */
+//	    public TemperatureSensorImpl(GpioController gpio){
+//	        super();
+//	    }
+//	    
+//	    public static void main(String[] args) throws InterruptedException {
+//	    	TemperatureSensorImpl tempSensor = new TemperatureSensorImpl(GpioFactory.getInstance());        
+//	        tempSensor.run(args);
+//	    }
 	    
-	    public static void main(String[] args) throws InterruptedException {
-	    	TemperatureSensorImpl tempSensor = new TemperatureSensorImpl(GpioFactory.getInstance());        
-	        tempSensor.run(args);
-	    }
-	    
-	    @Override
-	    protected void setup(String[] args) {
-	        if(args.length == 1){
-	            device_fileName = args[0];            
-	           // logger.debug("Ds18b20 sensor ready!");        
-	        }else{
-	            throw new RuntimeException(
-	                    "Please provide a device file name from "+W1_DEVICES_PATH);
-	        }
-	    }
+//	    @Override
+//	    protected void setup(String[] args) {
+//	        if(args.length == 1){
+//	            device_fileName = args[0];            
+//	           // logger.debug("Ds18b20 sensor ready!");        
+//	        }else{
+//	            throw new RuntimeException(
+//	                    "Please provide a device file name from "+W1_DEVICES_PATH);
+//	        }
+//	    }
 
-	    
-	    protected void loop(String[] args) {
-	        double temp;
-	        do{
-	            temp = readTempFromFile(getFullPathToDevice(device_fileName));
-	          //  logger.debug("Temperature is "+temp);
-	        }while(isNotInterrupted);
-	    }
+//	    
+//	    protected void loop(String[] args) {
+//	        double temp;
+//	        do{
+//	            temp = readTempFromFile(getFullPathToDevice(device_fileName));
+//	          //  logger.debug("Temperature is "+temp);
+//	        }while(isNotInterrupted);
+//	    }
 	    
 	    public static Path getFullPathToDevice(String deviceFileName){
 	        return FileSystems.getDefault().getPath(W1_DEVICES_PATH+deviceFileName+W1_SLAVE);

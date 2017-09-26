@@ -1,0 +1,18 @@
+package coopIntegration;
+
+import java.sql.Connection;
+
+public class DBConnectorImpl implements DBConnector {
+	
+
+	final static String dbString="jdbc:mysql://localhost/coopdb";
+	final static  String user="Tom";
+	final static  String password="PimpMasterCoop";
+		
+	public Connection getConnection() {
+		Connection newConn;
+		
+		return newConn;
+	}
+
+}
