@@ -2,8 +2,6 @@ package coopCore;
 
 //import coopDataStructures.CoopConfig;
 import coopDataStructures.CoopConfig;
-import coopIntegration.CameraFunctions;
-import coopIntegration.CameraFunctionsImpl;
 import coopIntegration.ChickenSounds;
 import coopIntegration.ChickenSoundsImpl;
 import coopIntegration.CoopFileReader;
@@ -77,7 +75,6 @@ public class CoopDriver {
 		String sunrise;
 		String sunset;		
 		int x = 1;
-		int picTimeCounter = 0;
 		
 		while(x==1) {
 						
@@ -106,14 +103,6 @@ public class CoopDriver {
 				e.printStackTrace();
 			}
 			
-			//camera functions
-			CameraFunctions cameraFunction = new CameraFunctionsImpl();
-			if(picTimeCounter == 0) {
-				cameraFunction.takePicture();				
-				picTimeCounter = config.getPicTimeInterval();
-			}
-			picTimeCounter--;
-			cameraFunction = null;
 			
 			//figure sunrise and sunset times
 			//Date sunrisePresetTime = null;

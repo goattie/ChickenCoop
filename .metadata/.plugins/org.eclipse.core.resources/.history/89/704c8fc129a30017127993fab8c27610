@@ -9,16 +9,13 @@ public class CoopConfig {
 	private boolean closeDoor;
 	private boolean openDoor;
 	private boolean doorIspOpen;
-	private String picSaveLocation;
-	private int picTimeInterval;
 	
 	public CoopConfig() {
 		
 	}
 	
 	public CoopConfig(String sunrisePreset, String sunsetPreset, String mp3Open,
-			String mp3Close, boolean closeDoor, boolean openDoor, boolean doorIsOpen,
-			String picSaveLocaiton, int picTimeInterval) {
+			String mp3Close, boolean closeDoor, boolean openDoor, boolean doorIsOpen) {
 		this.sunrisePreset = sunrisePreset;
 		this.sunsetPreset = sunsetPreset;
 		this.mp3Open = mp3Open;
@@ -26,8 +23,7 @@ public class CoopConfig {
 		this.closeDoor = closeDoor;
 		this.openDoor = openDoor;
 		this.doorIspOpen = doorIsOpen;
-		this.picSaveLocation = picSaveLocation;
-		this.picTimeInterval = picTimeInterval;
+		
 	}
 
 	public String getSunrisePreset() {
@@ -78,22 +74,6 @@ public class CoopConfig {
 
 	public void setDoorIspOpen(boolean doorIspOpen) {
 		this.doorIspOpen = doorIspOpen;
-	}
-
-	public String getPicSaveLocation() {
-		return picSaveLocation;
-	}
-
-	public void setPicSaveLocation(String picSaveLocation) {
-		this.picSaveLocation = picSaveLocation;
-	}
-
-	public int getPicTimeInterval() {
-		return picTimeInterval;
-	}
-
-	public void setPicTimeInterval(int picTimeInterval) {
-		this.picTimeInterval = picTimeInterval;
 	}
 	
 	

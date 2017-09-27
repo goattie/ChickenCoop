@@ -2,8 +2,6 @@ package coopCore;
 
 //import coopDataStructures.CoopConfig;
 import coopDataStructures.CoopConfig;
-import coopIntegration.CameraFunctions;
-import coopIntegration.CameraFunctionsImpl;
 import coopIntegration.ChickenSounds;
 import coopIntegration.ChickenSoundsImpl;
 import coopIntegration.CoopFileReader;
@@ -13,8 +11,8 @@ import coopIntegration.DoorFunctions;
 import coopIntegration.DoorFunctionsImpl;
 import coopIntegration.Humidity;
 import coopIntegration.HumidityImpl;
-//import coopIntegration.MySqlPoolableObjectFactory;
-//import coopIntegration.SqlPoolConnectionControl;
+import coopIntegration.MySqlPoolableObjectFactory;
+import coopIntegration.SqlPoolConnectionControl;
 import coopIntegration.TemperatureSensor;
 import coopIntegration.TemperatureSensorImpl;
 
@@ -24,13 +22,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Properties;
+import java.util.Timer;
+import java.util.TimerTask;
 
-//import org.apache.commons.pool.ObjectPool;
-//import org.apache.commons.pool.PoolableObjectFactory;
-//import org.apache.commons.pool.impl.GenericObjectPool;
-//import org.apache.commons.pool.impl.GenericObjectPool.Config;
-//import org.apache.commons.pool.impl.GenericObjectPoolFactory;
+import org.apache.commons.pool.ObjectPool;
+import org.apache.commons.pool.PoolableObjectFactory;
+import org.apache.commons.pool.impl.GenericObjectPool;
+import org.apache.commons.pool.impl.GenericObjectPool.Config;
+import org.apache.commons.pool.impl.GenericObjectPoolFactory;
 
 
 public class CoopDriver {
@@ -77,7 +79,6 @@ public class CoopDriver {
 		String sunrise;
 		String sunset;		
 		int x = 1;
-		int picTimeCounter = 0;
 		
 		while(x==1) {
 						
@@ -91,7 +92,7 @@ public class CoopDriver {
 			
 			//save config entry to config object
 			String configSql = "SELECT sunrise_preset, sunset_preset, mp3_open, mp3_close, open_door, "+
-					"close_door, door_status_open, pic_location, pic_interval FROM COOP_CONFIG";
+					"close_door, door_status_open FROM COOP_CONFIG";
 			CoopConfig config = null;
 			PreparedStatement configPS;
 			try {
@@ -99,21 +100,12 @@ public class CoopDriver {
 				ResultSet configResultSet=configPS.executeQuery(configSql);
 				config = new CoopConfig(configResultSet.getString(1), configResultSet.getString(2), 
 						configResultSet.getString(3), configResultSet.getString(4), configResultSet.getBoolean(5), 
-						configResultSet.getBoolean(6), configResultSet.getBoolean(7),
-						configResultSet.getString(8), configResultSet.getInt(9));  
+						configResultSet.getBoolean(6), configResultSet.getBoolean(7));  
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
-			//camera functions
-			CameraFunctions cameraFunction = new CameraFunctionsImpl();
-			if(picTimeCounter == 0) {
-				cameraFunction.takePicture();				
-				picTimeCounter = config.getPicTimeInterval();
-			}
-			picTimeCounter--;
-			cameraFunction = null;
 			
 			//figure sunrise and sunset times
 			//Date sunrisePresetTime = null;

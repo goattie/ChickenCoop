@@ -113,7 +113,6 @@ public class CoopDriver {
 				picTimeCounter = config.getPicTimeInterval();
 			}
 			picTimeCounter--;
-			cameraFunction = null;
 			
 			//figure sunrise and sunset times
 			//Date sunrisePresetTime = null;
