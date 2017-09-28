@@ -9,12 +9,9 @@
 <fullyQualifiedTypeName name="javax.sound.sampled.Clip"/>
 <fullyQualifiedTypeName name="coopIntegration.CoopConfig"/>
 <fullyQualifiedTypeName name="org.apache.commons.pool2.BasePooledObjectFactory"/>
-<fullyQualifiedTypeName name="java.sql.SQLException"/>
 <fullyQualifiedTypeName name="coopExceptions.MySqlPoolableException"/>
 <fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="java.sql.Connection"/>
 <fullyQualifiedTypeName name="java.sql.Statement"/>
-<fullyQualifiedTypeName name="java.sql.ResultSet"/>
 <fullyQualifiedTypeName name="org.apache.commons.pool.ObjectPool"/>
 <fullyQualifiedTypeName name="java.util.Properties"/>
 <fullyQualifiedTypeName name="org.apache.commons.pool.PoolableObjectFactory"/>
@@ -24,4 +21,24 @@
 <fullyQualifiedTypeName name="org.apache.commons.pool.impl.GenericObjectPool.Config"/>
 <fullyQualifiedTypeName name="coopIntegration.SqlPoolConnectionControl"/>
 <fullyQualifiedTypeName name="coopDataStructures.Config"/>
+<fullyQualifiedTypeName name="coopDataStructures.CoopConfig"/>
+<fullyQualifiedTypeName name="coopIntegration.DoorFunctions"/>
+<fullyQualifiedTypeName name="coopIntegration.DoorFunctionsImpl"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+<fullyQualifiedTypeName name="java.sql.DriverManager"/>
+<fullyQualifiedTypeName name="java.sql.SQLException"/>
+<fullyQualifiedTypeName name="java.sql.Connection"/>
+<fullyQualifiedTypeName name="coopIntegration.DBConnector"/>
+<fullyQualifiedTypeName name="coopIntegration.DBConnectorImpl"/>
+<fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+<fullyQualifiedTypeName name="java.sql.ResultSet"/>
+<fullyQualifiedTypeName name="coopIntegration.ChickenSounds"/>
+<fullyQualifiedTypeName name="coopIntegration.ChickenSoundsImpl"/>
+<fullyQualifiedTypeName name="coopIntegration.Humidity"/>
+<fullyQualifiedTypeName name="coopIntegration.HumidityImpl"/>
+<fullyQualifiedTypeName name="coopIntegration.TemperatureSensorImpl"/>
+<fullyQualifiedTypeName name="coopIntegration.TemperatureSensor"/>
+<fullyQualifiedTypeName name="coopIntegration.CameraFunctions"/>
+<fullyQualifiedTypeName name="coopIntegration.CameraFunctionsImpl"/>
 </qualifiedTypeNameHistroy>

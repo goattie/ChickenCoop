@@ -31,8 +31,6 @@ public class CameraFunctionsImpl implements CameraFunctions {
 			// Create a new string builder with the path to raspistill.
 			StringBuilder sb = new StringBuilder(raspistillPath);
 
-			picName = fileName;
-			
 			// Add parameters for no preview and burst mode.
 			sb.append(" -n -bm");
 			// Configure the camera timeout.

@@ -16,12 +16,19 @@ public class CameraFunctionsImpl implements CameraFunctions {
 	// Specify a default image name.
 	private String picName = "example.jpg";
 	// Specify a default image encoding.
-	private String picType = "jpg";	
+	private String picType = "jpg";
+
+	// Default class constructor.
+	public void RaspiStill() {
+		// Do anything else here. For example, you could create another
+		// constructor which accepts an alternate path to raspistill,
+		// or defines global parameters like the image quality.
+	}
 
 	// Default method to take a photo using the private values for
 	// name/width/height.
 	// Note: See the overloaded methods to override the private values.
-	public void takePicture(String fileName) {
+	public void takePicture() {
 		try {
 			// Determine the image type based on the file extension (or use the
 			// default).
@@ -31,8 +38,6 @@ public class CameraFunctionsImpl implements CameraFunctions {
 			// Create a new string builder with the path to raspistill.
 			StringBuilder sb = new StringBuilder(raspistillPath);
 
-			picName = fileName;
-			
 			// Add parameters for no preview and burst mode.
 			sb.append(" -n -bm");
 			// Configure the camera timeout.

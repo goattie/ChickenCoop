@@ -109,7 +109,7 @@ public class CoopDriver {
 			//camera functions
 			CameraFunctions cameraFunction = new CameraFunctionsImpl();
 			if(picTimeCounter == 0) {
-				cameraFunction.takePicture("Coop Pic"+currentDate.toString());				
+				cameraFunction.takePicture();				
 				picTimeCounter = config.getPicTimeInterval();
 			}
 			picTimeCounter--;
