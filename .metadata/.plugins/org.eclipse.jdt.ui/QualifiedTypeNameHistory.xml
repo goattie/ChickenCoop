@@ -41,4 +41,8 @@
 <fullyQualifiedTypeName name="coopIntegration.TemperatureSensor"/>
 <fullyQualifiedTypeName name="coopIntegration.CameraFunctions"/>
 <fullyQualifiedTypeName name="coopIntegration.CameraFunctionsImpl"/>
+<fullyQualifiedTypeName name="java.util.Calendar.Builder"/>
+<fullyQualifiedTypeName name="java.util.Calendar"/>
+<fullyQualifiedTypeName name="java.text.DateFormat"/>
+<fullyQualifiedTypeName name="java.util.TimeZone"/>
 </qualifiedTypeNameHistroy>

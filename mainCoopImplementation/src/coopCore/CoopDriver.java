@@ -6,7 +6,7 @@ import coopIntegration.CameraFunctions;
 import coopIntegration.CameraFunctionsImpl;
 import coopIntegration.ChickenSounds;
 import coopIntegration.ChickenSoundsImpl;
-import coopIntegration.CoopFileReader;
+//import coopIntegration.CoopFileReader;
 import coopIntegration.DBConnector;
 import coopIntegration.DBConnectorImpl;
 import coopIntegration.DoorFunctions;
@@ -22,15 +22,17 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
+import java.util.Calendar;
 //import org.apache.commons.pool.ObjectPool;
 //import org.apache.commons.pool.PoolableObjectFactory;
 //import org.apache.commons.pool.impl.GenericObjectPool;
 //import org.apache.commons.pool.impl.GenericObjectPool.Config;
 //import org.apache.commons.pool.impl.GenericObjectPoolFactory;
+import java.util.TimeZone;
 
 
 public class CoopDriver {
@@ -73,16 +75,15 @@ public class CoopDriver {
 //	}
 
 	public static void main (String args[]) {
-		//define sunrise and sunset
-		String sunrise;
-		String sunset;		
 		int x = 1;
 		int picTimeCounter = 0;
 		
 		while(x==1) {
 						
 			//get current time
-			Date currentDate = new Date();
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
+			dateFormat.setTimeZone(TimeZone.getTimeZone( "GMT-5")); 
+			Calendar newCal = Calendar.getInstance();
 			
 			//get database connection
 			Connection newConnection = null;
@@ -109,25 +110,22 @@ public class CoopDriver {
 			//camera functions
 			CameraFunctions cameraFunction = new CameraFunctionsImpl();
 			if(picTimeCounter == 0) {
-				cameraFunction.takePicture("Coop Pic"+currentDate.toString());				
+				cameraFunction.takePicture("Coop Pic "+dateFormat.format(newCal.getTime()));				
 				picTimeCounter = config.getPicTimeInterval();
 			}
 			picTimeCounter--;
 			cameraFunction = null;
-			
-			//figure sunrise and sunset times
-			//Date sunrisePresetTime = null;
-			//Date sunsetPresetTime = null;
+						
 			
 			//define doorFunctions;
 			DoorFunctions doorFunctions = new DoorFunctionsImpl();
 			
 			
-			//play sound for Chickens before Door Opens or Closes
+			//play sound for Chickens before Door Opens or Closes			
 			ChickenSounds playSounds = new ChickenSoundsImpl();
-			if(returnDateCompare(config.getSunrisePreset(), currentDate.toString()) && !config.isDoorIspOpen()) {
+			if(playMusicSunriseCheck(newCal, config.getSunrisePreset(), dateFormat) && !config.isDoorIspOpen()) {
 				playSounds.playOpenSound(config.getMp3Open());
-			} else if(returnDateCompare(config.getSunsetPreset(), currentDate.toString()) && config.isDoorIspOpen()) {
+			} else if(playMusicSunsetCheck(newCal, config.getSunsetPreset(), dateFormat) && config.isDoorIspOpen()) {
 				playSounds.playCloseSound(config.getMp3Close());
 			}
 			
@@ -138,20 +136,20 @@ public class CoopDriver {
 			} else if(config.isOpenDoor()==true && config.isDoorIspOpen()==false) {
 				doorFunctions.openDoor();
 				updateDoorStatus(true, newConnection);
-			} else if(returnDateCompare(currentDate.toString(), config.getSunrisePreset()) && config.isCloseDoor()) {
+			} else if(returnDateCompare(newCal.toString(), config.getSunrisePreset(), dateFormat) && config.isCloseDoor()) {
 				doorFunctions.openDoor();
 				updateDoorStatus(true, newConnection);
-			} else if(returnDateCompare(currentDate.toString(), config.getSunsetPreset()) && !config.isCloseDoor()) {
+			} else if(returnDateCompare(newCal.toString(), config.getSunsetPreset(), dateFormat) && !config.isCloseDoor()) {
 				doorFunctions.closeDoor();
 				updateDoorStatus(false, newConnection);
 			} 
 			
 			
 			//take humitidy and store
-			saveHumidity(newConnection, currentDate);
+			saveHumidity(newConnection, newCal);
 			
 			//take temp and store
-			saveTemperature(newConnection, currentDate);			
+			saveTemperature(newConnection, newCal);			
 			
 			try {
 				newConnection.close();
@@ -169,13 +167,53 @@ public class CoopDriver {
 		}
 	}
 	
-	public static boolean returnDateCompare(String date1, String date2) {
-		 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		 Date firstDate = null;
-		 Date secondDate = null;
+	public static boolean playMusicSunriseCheck(Calendar currentTime, String sunrise, SimpleDateFormat sdf) {
+		Calendar checkPoint = Calendar.getInstance();
 		try {
-			firstDate = sdf.parse(date1);
-			secondDate = sdf.parse(date2);
+			checkPoint.setTime(sdf.parse(sunrise));
+		} catch (ParseException e) {			
+			//add logging			
+		}		
+		checkPoint.add(Calendar.MINUTE, 10);
+		if(currentTime.after(sunrise) && currentTime.before(checkPoint)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public static boolean playMusicSunsetCheck(Calendar currentTime, String sunset, SimpleDateFormat sdf) {
+		Calendar checkPoint =Calendar.getInstance();
+		try {
+			checkPoint.setTime(sdf.parse(sunset));
+		} catch (ParseException e) {
+			//add logging
+		}
+		checkPoint.add(Calendar.MINUTE, -10);
+		if(currentTime.before(sunset) && currentTime.after(checkPoint)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public static boolean returnDateCompare(Calendar calendar1, Calendar calendar2) {
+		if(calendar1.after(calendar2)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public static boolean returnDateCompare(String date1, String date2, SimpleDateFormat sdf) {		 
+		 Calendar firstDate = Calendar.getInstance();
+		 Calendar secondDate = Calendar.getInstance();
+		 
+		try {
+			firstDate.setTime(sdf.parse(date1));
+			secondDate.setTime(sdf.parse(date2));
+			firstDate.setTimeZone(TimeZone.getTimeZone( "GMT-5"));
+			 secondDate.setTimeZone(TimeZone.getTimeZone( "GMT-5")); 
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -200,9 +238,9 @@ public class CoopDriver {
 		}
 	}
 	
-	public static void saveHumidity(Connection connection, Date currentDate) {
+	public static void saveHumidity(Connection connection, Calendar newDate) {
 		Humidity newHumidity = new HumidityImpl();
-		String humitidySql = "INSERT "+newHumidity.getHumidity()+","+currentDate.toString()+"INTO HUMIDITY";
+		String humitidySql = "INSERT "+newHumidity.getHumidity()+","+newDate.toString()+"INTO HUMIDITY";
 		PreparedStatement humidityPS;
 		try {
 			humidityPS = connection.prepareStatement(humitidySql);
@@ -213,9 +251,9 @@ public class CoopDriver {
 		}
 	}
 	
-	public static void saveTemperature(Connection connection, Date currentDate) {
+	public static void saveTemperature(Connection connection, Calendar newDate) {
 		TemperatureSensor newTemp= new TemperatureSensorImpl();
-		String tempSql = "INSERT "+newTemp.getTemperature()+","+currentDate.toString()+"INTO TEMP";
+		String tempSql = "INSERT "+newTemp.getTemperature()+","+newDate.toString()+"INTO TEMP";
 		PreparedStatement tempPS;
 		try {
 			tempPS = connection.prepareStatement(tempSql);
